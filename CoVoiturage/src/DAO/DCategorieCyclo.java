@@ -9,9 +9,7 @@ import Classe.CCategorieCyclo;
 
 public class DCategorieCyclo extends DAO<CCategorieCyclo>{
 	
-	public DCategorieCyclo(Connection conn){
-		super(conn);
-	}
+	public DCategorieCyclo() {	}
 	
 	public boolean create(CCategorieCyclo obj){		
 		return false;

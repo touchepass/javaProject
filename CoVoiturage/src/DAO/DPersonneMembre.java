@@ -8,9 +8,7 @@ import Classe.CPersonneMembre;
 
 public class DPersonneMembre extends DAO<CPersonneMembre>{
 	
-	public DPersonneMembre(Connection conn){
-		super(conn);
-	}
+	public DPersonneMembre() {	}
 	
 	public boolean create(CPersonneMembre obj){		
 		return false;
@@ -24,7 +22,7 @@ public class DPersonneMembre extends DAO<CPersonneMembre>{
 		return false;
 	}
 	
-	public CPersonneMembre find(Object obj/* ce qui permet de retrouver la balade */){
+	public CPersonneMembre find(Object obj){
 		CPersonneMembre a = new CPersonneMembre();
 		try{
 			ResultSet result = this.connect.createStatement(

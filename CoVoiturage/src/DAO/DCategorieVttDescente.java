@@ -9,9 +9,7 @@ import Classe.CCategorieVttDescente;
 public class DCategorieVttDescente extends DAO<CCategorieVttDescente>{
 
 	
-	public DCategorieVttDescente(Connection conn){
-		super(conn);
-	}
+	public DCategorieVttDescente() {	}
 	
 	public boolean create(CCategorieVttDescente obj){		
 		return false;

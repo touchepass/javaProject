@@ -7,9 +7,7 @@ import java.sql.SQLException;
 import Classe.CCategorieVttTrialiste;
 
 public class DCategorieVttTrialiste extends DAO<CCategorieVttTrialiste>{
-	public DCategorieVttTrialiste(Connection conn){
-		super(conn);
-	}
+	public DCategorieVttTrialiste() {	}
 	
 	public boolean create(CCategorieVttTrialiste obj){		
 		return false;

@@ -8,9 +8,7 @@ import Classe.CPersonneTresorier;
 
 public class DPersonneTresorier extends DAO<CPersonneTresorier> {
 	
-	public DPersonneTresorier(Connection conn){
-		super(conn);
-	}
+	public DPersonneTresorier() {	}
 	
 	public boolean create(CPersonneTresorier obj){		
 		return false;

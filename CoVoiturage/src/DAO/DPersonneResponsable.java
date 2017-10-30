@@ -8,10 +8,7 @@ import Classe.CPersonneResponsable;
 
 public class DPersonneResponsable extends DAO<CPersonneResponsable> {
 	
-	public DPersonneResponsable(Connection conn){
-		super(conn);
-	}
-	
+	public DPersonneResponsable() {	}
 	public boolean create(CPersonneResponsable obj){		
 		return false;
 	}

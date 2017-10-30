@@ -8,9 +8,7 @@ import Classe.CVehicule;
 
 public class DVehicule extends DAO<CVehicule>{
 	
-	public DVehicule(Connection conn){
-		super(conn);
-	}
+	public DVehicule() {	}
 	
 	public boolean create(CVehicule obj){		
 		return false;

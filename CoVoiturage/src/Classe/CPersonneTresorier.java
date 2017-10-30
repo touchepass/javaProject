@@ -6,8 +6,8 @@ public class CPersonneTresorier extends CPersonne{
 	
 	private int fond;	
 	
-	public CPersonneTresorier (String nom, String prenom, LocalDate dateNaissance, char sexe, int numero, String rue, int numRue, String localite, int codePostal, CCategorie cat) {
-		super( nom,  prenom,  dateNaissance,  sexe,  numero,  rue,  numRue,  localite,  codePostal);
+	public CPersonneTresorier (String nom, String prenom, LocalDate dateNaissance, char sexe, int numero, String rue, int numRue, String localite, int codePostal, String pseudo, String pass,CCategorie cat) {
+		super( nom,  prenom,  dateNaissance,  sexe,  numero,  rue,  numRue,  localite,  codePostal, pseudo, pass);
 		this.fond = 0;
 	}
 	

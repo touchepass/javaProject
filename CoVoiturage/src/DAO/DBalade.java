@@ -6,9 +6,7 @@ import Classe.CBalade;
 
 public class DBalade extends DAO<CBalade> {
 	
-	public DBalade(Connection conn){
-		super(conn);
-	}
+	public DBalade() {	}
 	
 	public boolean create(CBalade obj){		
 		return false;

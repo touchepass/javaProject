@@ -13,8 +13,10 @@ public abstract class CPersonne {
 	protected int numRue;
 	protected String localite;
 	protected int codePostal;
+	protected String pseudo;
+	protected String pass;
 	
-	public CPersonne(String nom, String prenom, LocalDate dateNaissance, char sexe, int numero, String rue, int numRue, String localite, int codePostal) {
+	public CPersonne(String nom, String prenom, LocalDate dateNaissance, char sexe, int numero, String rue, int numRue, String localite, int codePostal, String pseudo, String pass) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
@@ -22,6 +24,8 @@ public abstract class CPersonne {
 		this.numero = numero;
 		this.localite = localite;
 		this.codePostal = codePostal;
+		this.pseudo = pseudo;
+		this.pass = pass;
 	}
 	
 	public CPersonne() {}

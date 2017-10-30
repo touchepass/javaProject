@@ -8,9 +8,7 @@ import Classe.CCalendrier;
 
 public class DCalendrier extends DAO<CCalendrier> {
 	
-	public DCalendrier(Connection conn){
-		super(conn);
-	}
+	public DCalendrier() {	}
 	
 	public boolean create(CCalendrier obj){		
 		return false;
