@@ -10,10 +10,10 @@ public class CBalade {
 	private String localite;
 	private int codePostal;
 	private double forfait;
-	private LocalDate date;
+	private Date date;
 	private ArrayList<CVehicule> lstVehicule;
 	
-	public CBalade (String rue, int numRue, String localite, int codePostal, double forfait, LocalDate date) {
+	public CBalade (String rue, int numRue, String localite, int codePostal, double forfait, Date date) {
 		this.rue = rue;
 		this.numRue = numRue;
 		this.localite = localite;
@@ -44,7 +44,7 @@ public class CBalade {
 	public double getForfait() {
 		return this.forfait;
 	}
-	private LocalDate getDate() {
+	public Date getDate() {
 		return this.date;
 	}
 	
@@ -55,7 +55,7 @@ public class CBalade {
 	public void setForfait(int forfait) {
 		this.forfait = forfait;
 	}
-	public void setDate(LocalDate date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	

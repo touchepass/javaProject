@@ -4,8 +4,8 @@ public class CCategorieVttTrialiste extends CCategorieVtt{
 	
 	private String caracteristique;
 	
-	public CCategorieVttTrialiste(String nom, int diamPneu, int nbrPlateau, String caracteristique) {
-		super(nom, diamPneu, nbrPlateau);
+	public CCategorieVttTrialiste(int diamPneu, int nbrPlateau, String caracteristique) {
+		super("VttTrialiste", diamPneu, nbrPlateau);
 		this.caracteristique = caracteristique;
 	}
 	

@@ -28,7 +28,7 @@ public class DCategorieCyclo extends DAO<CCategorieCyclo>{
 		try{
 			ResultSet result = this.connect.createStatement(
 			ResultSet.TYPE_SCROLL_INSENSITIVE,
-			ResultSet.CONCUR_READ_ONLY).executeQuery(" " /* requête sql */);
+			ResultSet.CONCUR_READ_ONLY).executeQuery("select * from ");
 			if(result.first()) { 
 				// création de l'objet avec les caractéristiques prises de la db
 				a = new CCategorieCyclo();

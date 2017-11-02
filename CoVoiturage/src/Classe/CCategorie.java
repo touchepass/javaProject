@@ -1,6 +1,6 @@
 package Classe;
 
-public abstract class CCategorie {
+public class CCategorie {
 	protected String nom;
 	
 	public CCategorie(String nom) {

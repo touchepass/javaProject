@@ -7,12 +7,14 @@ public class CVehicule {
 	private ArrayList<CPersonne> lstPassager;
 	private int nbrPlaceAssise;
 	private int nbrPlaceVelo;
+	private String imma;
 	
-	public CVehicule (CPersonne conducteur, int nbrPlaceAssise, int nbrPlaceVelo) {
+	public CVehicule (CPersonne conducteur, int nbrPlaceAssise, int nbrPlaceVelo, String imma) {
 		this.conducteur = conducteur;
 		this.nbrPlaceAssise = nbrPlaceAssise;
 		this.nbrPlaceVelo = nbrPlaceVelo;
 		this.lstPassager = new ArrayList<CPersonne>();
+		this.imma = imma;
 	}
 	
 	public CVehicule() {}

@@ -3,7 +3,10 @@ package DAO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
 
+import Classe.CBalade;
 import Classe.CCalendrier;
 
 public class DCalendrier extends DAO<CCalendrier> {
@@ -11,6 +14,18 @@ public class DCalendrier extends DAO<CCalendrier> {
 	public DCalendrier() {	}
 	
 	public boolean create(CCalendrier obj){		
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate(
+					"INSERT INTO Calendrier (nom) "+
+					" VALUES ("+obj.getNom()+");" 
+					);
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	
@@ -24,15 +39,14 @@ public class DCalendrier extends DAO<CCalendrier> {
 	
 	public CCalendrier find(Object obj/* ce qui permet de retrouver la balade */){
 		CCalendrier a = new CCalendrier();
+		
 		try{
-			ResultSet result = this.connect.createStatement(
-			ResultSet.TYPE_SCROLL_INSENSITIVE,
-			ResultSet.CONCUR_READ_ONLY).executeQuery(" " /* requête sql */);
+			String nomC = (String)obj;
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet result = stmt.executeQuery("select * from Calendrier where nom= "+nomC+";" );
 			if(result.first()) { 
-				// création de l'objet avec les caractéristiques prises de la db
-				a = new CCalendrier();
+				a = new CCalendrier(result.getString("nom"));
 			}
-					
 		}
 		catch(SQLException e){
 			e.printStackTrace();

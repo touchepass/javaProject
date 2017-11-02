@@ -1,14 +1,29 @@
 package DAO;
 
 import java.sql.*;
+import java.util.Date;
 
 import Classe.CBalade;
+import Classe.CCategorie;
+import Classe.CPersonneMembre;
 
 public class DBalade extends DAO<CBalade> {
 	
 	public DBalade() {	}
 	
 	public boolean create(CBalade obj){		
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate(
+					"INSERT INTO Balade (rue, numRue,localite,codePostal,forfait,dateBalade)" + 
+					" VALUES ("+obj.getRue()+", "+obj.getNumRue()+" , "+obj.getLocalite()+" , "+obj.getCodePostal()+","+obj.getForfait()+" , "+obj.getDate()+");" 
+					);
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	
@@ -20,17 +35,18 @@ public class DBalade extends DAO<CBalade> {
 		return false;
 	}
 	
-	public CBalade find(Object obj/* ce qui permet de retrouver la balade */){
+	public CBalade find(Object obj){
 		CBalade a = new CBalade();
+		
 		try{
-			ResultSet result = this.connect.createStatement(
-			ResultSet.TYPE_SCROLL_INSENSITIVE,
-			ResultSet.CONCUR_READ_ONLY).executeQuery(" " /* requête sql */);
+			Date dateB = (Date)obj;
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet result = stmt.executeQuery("select * from Balade where dateBalade= "+dateB+";" );
 			if(result.first()) { 
-				// création de l'objet avec les caractéristiques prises de la db
-				a = new CBalade();
+				a = new CBalade(result.getString("rue"),result.getInt("numRue"),
+						result.getString("localite"),result.getInt("codePostal"),
+						result.getInt("forfait"),result.getDate("dateBalade"));
 			}
-					
 		}
 		catch(SQLException e){
 			e.printStackTrace();

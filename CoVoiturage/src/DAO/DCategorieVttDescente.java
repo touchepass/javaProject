@@ -23,12 +23,12 @@ public class DCategorieVttDescente extends DAO<CCategorieVttDescente>{
 		return false;
 	}
 	
-	public CCategorieVttDescente find(Object obj/* ce qui permet de retrouver la balade */){
+	public CCategorieVttDescente find(Object obj){
 		CCategorieVttDescente a = new CCategorieVttDescente();
 		try{
 			ResultSet result = this.connect.createStatement(
 			ResultSet.TYPE_SCROLL_INSENSITIVE,
-			ResultSet.CONCUR_READ_ONLY).executeQuery(" " /* requête sql */);
+			ResultSet.CONCUR_READ_ONLY).executeQuery("" /* requête sql */);
 			if(result.first()) { 
 				// création de l'objet avec les caractéristiques prises de la db
 				a = new CCategorieVttDescente();

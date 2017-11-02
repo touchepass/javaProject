@@ -1,13 +1,14 @@
 package Classe;
 
-import java.time.LocalDate; 
+import java.time.LocalDate;
+import java.util.Date; 
 
 public abstract class CPersonne {
 	
 	protected String nom;
 	protected String prenom;
-	protected LocalDate dateNaissance;
-	protected char sexe;
+	protected Date dateNaissance;
+	protected String sexe;
 	protected int numero;
 	protected String rue;
 	protected int numRue;
@@ -16,7 +17,7 @@ public abstract class CPersonne {
 	protected String pseudo;
 	protected String pass;
 	
-	public CPersonne(String nom, String prenom, LocalDate dateNaissance, char sexe, int numero, String rue, int numRue, String localite, int codePostal, String pseudo, String pass) {
+	public CPersonne(String nom, String prenom, Date dateNaissance, String sexe, int numero, String rue, int numRue, String localite, int codePostal, String pseudo, String pass) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
@@ -40,10 +41,10 @@ public abstract class CPersonne {
 	public String getPrenom() {
 		return this.prenom;
 	}
-	public LocalDate getDateNaissance() {
+	public Date getDateNaissance() {
 		return this.dateNaissance;
 	}
-	public char getSexe() {
+	public String getSexe() {
 		return this.sexe;
 	}
 	public int getNumero() {
