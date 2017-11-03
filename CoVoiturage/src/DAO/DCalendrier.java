@@ -41,11 +41,11 @@ public class DCalendrier extends DAO<CCalendrier> {
 		CCalendrier a = new CCalendrier();
 		
 		try{
-			String nomC = (String)obj;
+			int IdC = (Integer)obj;
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			ResultSet result = stmt.executeQuery("select * from Calendrier where nom= "+nomC+";" );
+			ResultSet result = stmt.executeQuery("select * from Calendrier where IdCalendrier= "+IdC+";" );
 			if(result.first()) { 
-				a = new CCalendrier(result.getString("nom"));
+				a = new CCalendrier(result.getInt("IdCalendrier"),result.getString("nom"));
 			}
 		}
 		catch(SQLException e){

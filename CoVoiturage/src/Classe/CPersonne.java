@@ -5,6 +5,7 @@ import java.util.Date;
 
 public abstract class CPersonne {
 	
+	protected int IdPers;
 	protected String nom;
 	protected String prenom;
 	protected Date dateNaissance;
@@ -17,7 +18,8 @@ public abstract class CPersonne {
 	protected String pseudo;
 	protected String pass;
 	
-	public CPersonne(String nom, String prenom, Date dateNaissance, String sexe, int numero, String rue, int numRue, String localite, int codePostal, String pseudo, String pass) {
+	public CPersonne(int IdPers, String nom, String prenom, Date dateNaissance, String sexe, int numero, String rue, int numRue, String localite, int codePostal, String pseudo, String pass) {
+		this.IdPers = IdPers;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
@@ -34,6 +36,9 @@ public abstract class CPersonne {
 	///////////////////////
 	// Accesseur
 	///////////////////////
+	public int getIdPers() {
+		return this.IdPers;
+	}
 	
 	public String getNom() {
 		return this.nom;

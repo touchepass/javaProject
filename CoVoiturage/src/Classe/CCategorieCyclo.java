@@ -1,11 +1,13 @@
 package Classe;
 
 public class CCategorieCyclo extends CCategorie{
-
+	
+	private int IdCatCyclo;
 	private int capacitePorteBagage;
 	
-	public CCategorieCyclo(int capacitePorteBagage) {
-		super("Cyclo");
+	public CCategorieCyclo(int IdCat, int IdCatCyclo, int capacitePorteBagage) {
+		super(IdCat,"Cyclo");
+		this.IdCatCyclo = IdCatCyclo;
 		this.capacitePorteBagage = capacitePorteBagage;
 	}
 	
@@ -14,6 +16,10 @@ public class CCategorieCyclo extends CCategorie{
 	///////////////////////
 	// Accesseur
 	///////////////////////
+	
+	public int getIdCatCyclo() {
+		return this.IdCatCyclo;
+	}
 	
 	public int getCapacitePorteBagage() {
 		return this.capacitePorteBagage;

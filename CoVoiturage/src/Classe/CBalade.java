@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 public class CBalade {
 	
+	private int IdBalade;
 	private String rue;
 	private int numRue;
 	private String localite;
@@ -13,7 +14,8 @@ public class CBalade {
 	private Date date;
 	private ArrayList<CVehicule> lstVehicule;
 	
-	public CBalade (String rue, int numRue, String localite, int codePostal, double forfait, Date date) {
+	public CBalade (int IdBalade , String rue, int numRue, String localite, int codePostal, double forfait, Date date) {
+		this.IdBalade = IdBalade;
 		this.rue = rue;
 		this.numRue = numRue;
 		this.localite = localite;
@@ -28,6 +30,9 @@ public class CBalade {
 	///////////////////////
 	// Accesseur
 	///////////////////////
+	public int getIdBalade() {
+		return this.IdBalade;
+	}
 	
 	public String getRue() {
 		return this.rue;

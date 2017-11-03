@@ -23,15 +23,14 @@ public class DCategorieCyclo extends DAO<CCategorieCyclo>{
 		return false;
 	}
 	
-	public CCategorieCyclo find(Object obj/* ce qui permet de retrouver la balade */){
+	public CCategorieCyclo find(Object obj){
 		CCategorieCyclo a = new CCategorieCyclo();
 		try{
 			ResultSet result = this.connect.createStatement(
 			ResultSet.TYPE_SCROLL_INSENSITIVE,
-			ResultSet.CONCUR_READ_ONLY).executeQuery("select * from ");
+			ResultSet.CONCUR_READ_ONLY).executeQuery("select * from CategorieCyclo where IdCatCyclo = "+(Integer)obj+";");
 			if(result.first()) { 
-				// création de l'objet avec les caractéristiques prises de la db
-				a = new CCategorieCyclo();
+				a = new CCategorieCyclo(result.getInt("IdCat"),result.getInt("IdCatCyclo"),result.getInt("capacitePorteBagage"));
 			}
 					
 		}

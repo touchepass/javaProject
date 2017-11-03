@@ -32,12 +32,13 @@ public class DPersonneMembre extends DAO<CPersonneMembre>{
 			if(result.first()) { 
 				DCategorie dc = new DCategorie();
 				c = dc.find(result.getInt("IdCat"));
-				a = new CPersonneMembre(result.getString("nom"),result.getString("prenom"),
+				a = new CPersonneMembre(result.getInt("IdPers"),
+						result.getString("nom"),result.getString("prenom"),
 						result.getDate("dateNaissance"),result.getString("sexe"),
 						result.getInt("numero"),result.getString("rue"),
 						result.getInt("numRue"),result.getString("localite"),
 						result.getInt("CodePostal"),result.getString("pseudo"),
-						result.getString("pass"),
+						result.getString("pass"),result.getInt("IdPersMem"),
 						c);
 			}
 		}
@@ -56,12 +57,13 @@ public class DPersonneMembre extends DAO<CPersonneMembre>{
 			if(result.first()) { 
 				DCategorie dc = new DCategorie();
 				c = dc.find(result.getInt("IdCat"));
-				a = new CPersonneMembre(result.getString("nom"),result.getString("prenom"),
+				a = new CPersonneMembre(result.getInt("IdPers"),
+						result.getString("nom"),result.getString("prenom"),
 						result.getDate("dateNaissance"),result.getString("sexe"),
 						result.getInt("numero"),result.getString("rue"),
 						result.getInt("numRue"),result.getString("localite"),
 						result.getInt("CodePostal"),result.getString("pseudo"),
-						result.getString("pass"),
+						result.getString("pass"),result.getInt("IdPersMem"),
 						c);
 			}
 		}

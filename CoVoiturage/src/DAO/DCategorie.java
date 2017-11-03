@@ -43,7 +43,7 @@ public class DCategorie extends DAO<CCategorie>{
 			ResultSet.TYPE_SCROLL_INSENSITIVE,
 			ResultSet.CONCUR_READ_ONLY).executeQuery("select * from Categorie where IdCat = " + (Integer)obj );
 			if(result.first()) { 
-				a = new CCategorie(result.getString("nom"));
+				a = new CCategorie(result.getInt("IdCat"),result.getString("nom"));
 			}
 					
 		}

@@ -39,11 +39,12 @@ public class DBalade extends DAO<CBalade> {
 		CBalade a = new CBalade();
 		
 		try{
-			Date dateB = (Date)obj;
+			int IdB = (Integer)obj;
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			ResultSet result = stmt.executeQuery("select * from Balade where dateBalade= "+dateB+";" );
+			ResultSet result = stmt.executeQuery("select * from Balade where IdBalade= "+IdB+";" );
 			if(result.first()) { 
-				a = new CBalade(result.getString("rue"),result.getInt("numRue"),
+				a = new CBalade(result.getInt("IdBalade"),
+						result.getString("rue"),result.getInt("numRue"),
 						result.getString("localite"),result.getInt("codePostal"),
 						result.getInt("forfait"),result.getDate("dateBalade"));
 			}

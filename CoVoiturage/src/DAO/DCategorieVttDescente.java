@@ -28,10 +28,9 @@ public class DCategorieVttDescente extends DAO<CCategorieVttDescente>{
 		try{
 			ResultSet result = this.connect.createStatement(
 			ResultSet.TYPE_SCROLL_INSENSITIVE,
-			ResultSet.CONCUR_READ_ONLY).executeQuery("" /* requête sql */);
+			ResultSet.CONCUR_READ_ONLY).executeQuery(" select * from CategorieVtt where IdCat = 4 and IdCatVtt = "+(Integer)obj+";");
 			if(result.first()) { 
-				// création de l'objet avec les caractéristiques prises de la db
-				a = new CCategorieVttDescente();
+				a = new CCategorieVttDescente(result.getInt("IdCat"),result.getInt("IdCatVtt"),result.getInt("diamPneu"),result.getInt("nbrPlateau"),result.getString("caracteristique"));
 			}
 					
 		}

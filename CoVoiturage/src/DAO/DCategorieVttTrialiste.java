@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import Classe.CCategorieVttRandonnee;
 import Classe.CCategorieVttTrialiste;
 
 public class DCategorieVttTrialiste extends DAO<CCategorieVttTrialiste>{
@@ -21,17 +22,15 @@ public class DCategorieVttTrialiste extends DAO<CCategorieVttTrialiste>{
 		return false;
 	}
 	
-	public CCategorieVttTrialiste find(Object obj/* ce qui permet de retrouver la balade */){
+	public CCategorieVttTrialiste find(Object obj){
 		CCategorieVttTrialiste a = new CCategorieVttTrialiste();
 		try{
 			ResultSet result = this.connect.createStatement(
 			ResultSet.TYPE_SCROLL_INSENSITIVE,
-			ResultSet.CONCUR_READ_ONLY).executeQuery(" " /* requête sql */);
+			ResultSet.CONCUR_READ_ONLY).executeQuery(" select * from CategorieVtt where IdCat = 2 and IdCatVtt = "+(Integer)obj+";");
 			if(result.first()) { 
-				// création de l'objet avec les caractéristiques prises de la db
-				a = new CCategorieVttTrialiste();
-			}
-					
+				a = new CCategorieVttTrialiste(result.getInt("IdCat"),result.getInt("IdCatVtt"),result.getInt("diamPneu"),result.getInt("nbrPlateau"),result.getString("caracteristique"));
+			}	
 		}
 		catch(SQLException e){
 			e.printStackTrace();

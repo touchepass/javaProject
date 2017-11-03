@@ -24,7 +24,7 @@ public class DVehicule extends DAO<CVehicule>{
 		return false;
 	}
 	
-	public CVehicule find(Object obj/* ce qui permet de retrouver la balade */){
+	public CVehicule find(Object obj){
 		CVehicule a = new CVehicule();
 		try{
 			String immaT = (String)obj;
@@ -32,8 +32,8 @@ public class DVehicule extends DAO<CVehicule>{
 			ResultSet result = stmt.executeQuery("select * from vehicule where imma= "+immaT+";" );
 			if(result.first()) { 
 				CPersonneMembre pm = new DPersonneMembre().find(result.getInt("IdPersMem"));
-				a = new CVehicule(pm,result.getInt("nbrPlaceAssise"),result.getInt("nbrPlaceVelo"),
-						result.getString("imma"));
+				a = new CVehicule(result.getInt("IdVehicule"),pm,result.getInt("nbrPlaceAssise"),
+						result.getInt("nbrPlaceVelo"),result.getString("imma"));
 			}
 		}
 		catch(SQLException e){

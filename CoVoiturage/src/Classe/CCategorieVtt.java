@@ -4,8 +4,8 @@ public abstract class CCategorieVtt extends CCategorie {
 	
 	protected int diamPneu;
 	protected int nbrPlateau;
-	public CCategorieVtt(String nom, int diamPneu, int nbrPlateau) {
-		super(nom);
+	public CCategorieVtt(int IdCat, String nom, int diamPneu, int nbrPlateau) {
+		super(IdCat,nom);
 		
 		this.diamPneu = diamPneu;
 		this.nbrPlateau = nbrPlateau;

@@ -35,13 +35,39 @@ public class DPersonneTresorier extends DAO<CPersonneTresorier> {
 			if(result.first()) { 
 				DCategorie dc = new DCategorie();
 				c = dc.find(result.getInt("IdCat"));
-				a = new CPersonneTresorier(result.getString("nom"),result.getString("prenom"),
+				a = new CPersonneTresorier(result.getInt("IdPers"),
+						result.getString("nom"),result.getString("prenom"),
 						result.getDate("dateNaissance"),result.getString("sexe"),
 						result.getInt("numero"),result.getString("rue"),
 						result.getInt("numRue"),result.getString("localite"),
 						result.getInt("CodePostal"),result.getString("pseudo"),
-						result.getString("pass"),result.getInt("Fond")
-						);
+						result.getString("pass"),result.getInt("IdPersTres"),
+						result.getInt("Fond"));
+			}
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return a;
+	}
+	
+	public CPersonneTresorier find(int obj){
+		CPersonneTresorier a = new CPersonneTresorier();
+		CCategorie  c = new CCategorie();
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet result = stmt.executeQuery("select * from Personne p  inner join PersonneTresorier pm " + " on pm.IdPers = p.IdPers where IdPersTres="+obj+";" );
+			if(result.first()) { 
+				DCategorie dc = new DCategorie();
+				c = dc.find(result.getInt("IdCat"));
+				a = new CPersonneTresorier(result.getInt("IdPers"),
+						result.getString("nom"),result.getString("prenom"),
+						result.getDate("dateNaissance"),result.getString("sexe"),
+						result.getInt("numero"),result.getString("rue"),
+						result.getInt("numRue"),result.getString("localite"),
+						result.getInt("CodePostal"),result.getString("pseudo"),
+						result.getString("pass"),result.getInt("IdPersTres"),
+						result.getInt("Fond"));
 			}
 		}
 		catch(SQLException e){
