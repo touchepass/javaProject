@@ -13,10 +13,31 @@ public class DVehicule extends DAO<CVehicule>{
 	public DVehicule() {	}
 	
 	public boolean create(CVehicule obj){		
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate(
+					"INSERT INTO Vehicule (IdPersMem,nbrPlaceAssise,nbrPlaceVelo,Imma) "+
+					" VALUES ("+(obj.getConducteur()).getIdPersMem()+","+obj.getNbrPlaceAssise()+","+obj.getNbrPlaceVelo()+","+obj.getImma()+");" 
+					);
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	
 	public boolean delete(CVehicule obj){
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate("DELETE FROM Vehicule WHERE IdVehicule = "+obj.getIdVehicule()+";");
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	

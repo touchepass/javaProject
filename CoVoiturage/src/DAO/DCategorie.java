@@ -30,10 +30,28 @@ public class DCategorie extends DAO<CCategorie>{
 	}
 	
 	public boolean delete(CCategorie obj){
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate("DELETE FROM Categorie WHERE IdCat = "+obj.getIdCat()+";");
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	
 	public boolean update(CCategorie obj){
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate("UPDATE Balde SET nom = "+obj.getNom()+"WHERE IdCat ="+obj.getIdCat()+";");
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	public CCategorie find(Object obj){

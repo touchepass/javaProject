@@ -1,5 +1,6 @@
 package Classe;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class CPersonneResponsable extends CPersonne{
@@ -17,6 +18,10 @@ public class CPersonneResponsable extends CPersonne{
 	
 	public int getIdPersResp() {
 		return this.IdPersResp;
+	}
+	
+	public CCategorie getCategorie(){
+		return this.cat;
 	}
 	
 	///////////////////////

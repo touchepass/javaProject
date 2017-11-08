@@ -4,13 +4,13 @@ import java.util.* ;
 public class CVehicule {
 	
 	private int IdVehicule;
-	private CPersonne conducteur;
+	private CPersonneMembre conducteur;
 	private ArrayList<CPersonne> lstPassager;
 	private int nbrPlaceAssise;
 	private int nbrPlaceVelo;
 	private String imma;
 	
-	public CVehicule (int IdVehicule,CPersonne conducteur, int nbrPlaceAssise, int nbrPlaceVelo, String imma) {
+	public CVehicule (int IdVehicule,CPersonneMembre conducteur, int nbrPlaceAssise, int nbrPlaceVelo, String imma) {
 		this.IdVehicule = IdVehicule;
 		this.conducteur = conducteur;
 		this.nbrPlaceAssise = nbrPlaceAssise;
@@ -28,7 +28,7 @@ public class CVehicule {
 		return this.IdVehicule;
 	}
 	
-	public CPersonne getConducteur() {
+	public CPersonneMembre getConducteur() {
 		return this.conducteur;
 	}
 	
@@ -38,6 +38,10 @@ public class CVehicule {
 	
 	public int getNbrPlaceVelo() {
 		return this.nbrPlaceVelo;
+	}
+	
+	public String getImma() {
+		return this.imma;
 	}
 	
 	///////////////////////

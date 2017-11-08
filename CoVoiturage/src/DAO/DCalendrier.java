@@ -30,10 +30,29 @@ public class DCalendrier extends DAO<CCalendrier> {
 	}
 	
 	public boolean delete(CCalendrier obj){
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate("DELETE FROM Calendrier WHERE IdCalendrier = "+obj.getIdCalendrier()+";");
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	
 	public boolean update(CCalendrier obj){
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate("UPDATE Calendrier SET nom = "+obj.getNom()+"WHERE IdCalendrier = "
+					+obj.getIdCalendrier()+";");
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	

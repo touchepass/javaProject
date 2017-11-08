@@ -13,10 +13,31 @@ public class DPersonneResponsable extends DAO<CPersonneResponsable> {
 	
 	public DPersonneResponsable() {	}
 	public boolean create(CPersonneResponsable obj){		
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate(
+					"INSERT INTO PersonneResponsable (IdPers,IdCat) "+
+					" VALUES ("+3+","+obj.getIdPers()+","+obj.getCategorie()+");" 
+					);
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	
 	public boolean delete(CPersonneResponsable obj){
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate("DELETE FROM PersonneResponsable WHERE IdPersResp = "+obj.getIdPersResp()+";");
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	

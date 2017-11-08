@@ -14,14 +14,46 @@ public class DPersonneTresorier extends DAO<CPersonneTresorier> {
 	public DPersonneTresorier() {	}
 	
 	public boolean create(CPersonneTresorier obj){		
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate(
+					"INSERT INTO PersonneTresorier (IdPers,fond) "+
+					" VALUES ("+3+","+obj.getIdPers()+","+obj.getFond()+");" 
+					);
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	
 	public boolean delete(CPersonneTresorier obj){
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate("DELETE FROM PersonneTresorier WHERE IdPersTres = "+obj.getIdPersTres()+";");
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	
 	public boolean update(CPersonneTresorier obj){
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate("UPDATE PersonneTresorier SET"
+					+ " fond = "+obj.getFond()
+					+ " WHERE IdPersTres = "+obj.getIdPersTres()+";");
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	

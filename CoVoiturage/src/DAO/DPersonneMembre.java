@@ -11,14 +11,46 @@ public class DPersonneMembre extends DAO<CPersonneMembre>{
 	public DPersonneMembre() {	}
 	
 	public boolean create(CPersonneMembre obj){		
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate(
+					"INSERT INTO PersonneMembre (IdPers,payementCotisation,IdCat) "+
+					" VALUES ("+3+","+obj.getIdPers()+","+obj.getPayementCotistion()+","+obj.getListCategoriePositio(0).getIdCat()+");" 
+					);
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	
 	public boolean delete(CPersonneMembre obj){
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate("DELETE FROM PersonneMembre WHERE IdPersMem = "+obj.getIdPersMem()+";");
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	
 	public boolean update(CPersonneMembre obj){
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate("UPDATE PersonneMembre SET"
+					+ " payementCotisation = "+obj.getPayementCotistion()
+					+ " WHERE IdPersMem = "+obj.getIdPersMem()+";");
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	

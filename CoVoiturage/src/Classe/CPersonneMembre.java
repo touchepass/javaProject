@@ -31,6 +31,14 @@ public class CPersonneMembre extends CPersonne{
 		return this.payementCotistion;
 	}
 	
+	public ArrayList<CCategorie> getListCategorie(){
+		return this.lstCat;
+	}
+	
+	public CCategorie getListCategoriePositio(int nbr){
+		return this.lstCat.get(nbr);
+	}
+	
 	///////////////////////
 	// Mutateur
 	///////////////////////

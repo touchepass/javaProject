@@ -28,10 +28,32 @@ public class DBalade extends DAO<CBalade> {
 	}
 	
 	public boolean delete(CBalade obj){
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate("DELETE FROM Balade WHERE IdBalade = "+obj.getIdBalade()+";");
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	
 	public boolean update(CBalade obj){
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate("UPDATE Balde SET"
+					+ " rue = "+obj.getRue()+", numRue = "+obj.getNumRue()
+					+ "	localite = "+obj.getLocalite()+" codePostal = "+obj.getCodePostal()
+					+ " forfait = "+obj.getForfait()+" dateBalade = "+obj.getDate()
+					+ " WHERE IdBalade = "+obj.getIdBalade()+";");
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	
