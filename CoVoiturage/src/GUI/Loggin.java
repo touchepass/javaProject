@@ -48,9 +48,9 @@ public class Loggin {
 		frmConnection.setTitle("Connection");
 		frmConnection.setBounds(100, 100, 450, 300);
 		frmConnection.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmConnection.getContentPane().setLayout(null);
 		
 		JButton btnValider = new JButton("Valider");
+		btnValider.setBounds(67, 198, 89, 23);
 		btnValider.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -58,12 +58,12 @@ public class Loggin {
 				CPersonneMembre cm = pm.find(txtPseudo.getText().toLowerCase());
 				
 				AccueilMembre fenetre = new AccueilMembre(cm);
-				fenetre.main();
+				fenetre.
 				frmConnection.dispose();
 				
 			}
 		});
-		btnValider.setBounds(67, 198, 89, 23);
+		frmConnection.getContentPane().setLayout(null);
 		frmConnection.getContentPane().add(btnValider);
 		
 		JButton btnQuitter = new JButton("Quitter");
@@ -75,8 +75,8 @@ public class Loggin {
 		frmConnection.getContentPane().add(lblPseudo);
 		
 		txtPseudo = new JTextField();
-		txtPseudo.setText("touchepass");
 		txtPseudo.setBounds(260, 60, 86, 20);
+		txtPseudo.setText("touchepass");
 		frmConnection.getContentPane().add(txtPseudo);
 		txtPseudo.setColumns(10);
 		
@@ -85,8 +85,8 @@ public class Loggin {
 		frmConnection.getContentPane().add(lblPass);
 		
 		txtPass = new JTextField();
-		txtPass.setText("azerty");
 		txtPass.setBounds(260, 104, 86, 20);
+		txtPass.setText("azerty");
 		frmConnection.getContentPane().add(txtPass);
 		txtPass.setColumns(10);
 	}

@@ -67,6 +67,9 @@ public abstract class CPersonne {
 	public int getCodePostal() {
 		return this.numRue;
 	}
+	public String getPseudo() {
+		return this.pseudo;
+	}
 	///////////////////////
 	// Mutateur
 	///////////////////////
