@@ -45,6 +45,20 @@ public class DPersonneMembre extends DAO<CPersonneMembre>{
 			stmt.executeUpdate("UPDATE PersonneMembre SET"
 					+ " payementCotisation = "+obj.getPayementCotistion()
 					+ " WHERE IdPersMem = "+obj.getIdPersMem()+";");
+			
+			
+			
+			String sql = "UPDATE Personne SET"
+					+ " numero = \""+obj.getNumero()+"\", "
+					+ " rue = \""+obj.getRue()+"\", "
+					+ " numrue = \""+obj.getNumRue()+"\", "
+					+ " localite = \""+obj.getLocalite()+"\", "
+					+ " CodePostal = \""+obj.getCodePostal()+"\""
+					+ " WHERE IdPers = "+obj.getIdPers()+";";
+			
+			
+			stmt.executeUpdate(sql);
+			
 			return true;
 		}
 		catch(SQLException e){

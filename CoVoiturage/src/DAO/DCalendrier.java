@@ -72,4 +72,20 @@ public class DCalendrier extends DAO<CCalendrier> {
 		}
 		return a;
 	}
+	
+	public CCalendrier find(String obj/* ce qui permet de retrouver la balade */){
+		CCalendrier a = new CCalendrier();
+		
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet result = stmt.executeQuery("select * from Calendrier where nom= \""+obj+"\";" );
+			if(result.first()) { 
+				a = new CCalendrier(result.getInt("IdCalendrier"),result.getString("nom"));
+			}
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return a;
+	}
 }

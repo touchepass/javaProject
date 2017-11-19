@@ -2,8 +2,10 @@ package GUI;
 
 import java.awt.EventQueue;
 
+import Classe.CCalendrier;
 import Classe.CCategorie;
 import Classe.CPersonneMembre;
+import DAO.DCalendrier;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -117,16 +119,14 @@ public class AccueilMembre {
 		panel.setLayout(gl_panel);
 		
 		JButton btnNewButton = new JButton("Modifier mes Infos");
-		btnNewButton.addKeyListener(new KeyAdapter() {
+		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
-			public void keyPressed(KeyEvent arg0) {
-				// fenetre donnéePerso
+			public void mouseClicked(MouseEvent e) {
+				DonneePerso fenetre = new DonneePerso(cm);
+				frmPageMembre.dispose();
 			}
 		});
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		
 		btnNewButton.setBounds(22, 227, 147, 23);
 		frmPageMembre.getContentPane().add(btnNewButton);
 		
@@ -155,9 +155,17 @@ public class AccueilMembre {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setEditable(true);
 		comboBox.setBounds(226, 46, 147, 34);
-		
+		CCalendrier Ca = new CCalendrier();
 		for(CCategorie C : cm.getListCategorie()) {
-			comboBox.addItem(C);
+			
+			DCalendrier DC = new DCalendrier();
+			try {
+				 Ca = DC.find(C.getNom());
+			}
+			catch(Exception e){
+				
+			}
+			comboBox.addItem(Ca);
 		}
 		
 		frmPageMembre.getContentPane().add(comboBox);
@@ -233,6 +241,7 @@ public class AccueilMembre {
 		JButton btnNewButton_3 = new JButton("Voir");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
 		});
 		btnNewButton_3.setBounds(226, 184, 89, 23);
