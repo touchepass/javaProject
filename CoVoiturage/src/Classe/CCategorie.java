@@ -26,5 +26,8 @@ public class CCategorie {
 	///////////////////////
 	// Méthodes
 	///////////////////////
-
+	
+	public String toString() {
+		return this.getNom();
+	}
 }

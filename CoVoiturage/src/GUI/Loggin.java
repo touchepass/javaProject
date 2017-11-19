@@ -38,6 +38,7 @@ public class Loggin {
 	 */
 	public Loggin() {
 		initialize();
+		this.frmConnection.setVisible(true);
 	}
 
 	/**
@@ -58,7 +59,6 @@ public class Loggin {
 				CPersonneMembre cm = pm.find(txtPseudo.getText().toLowerCase());
 				
 				AccueilMembre fenetre = new AccueilMembre(cm);
-				fenetre.
 				frmConnection.dispose();
 				
 			}

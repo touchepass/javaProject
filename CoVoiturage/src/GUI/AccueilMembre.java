@@ -1,6 +1,8 @@
 package GUI;
 
 import java.awt.EventQueue;
+
+import Classe.CCategorie;
 import Classe.CPersonneMembre;
 
 import javax.swing.JFrame;
@@ -21,28 +23,18 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JRadioButton;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AccueilMembre {
 
 	private JFrame frmPageMembre;
 	
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AccueilMembre window = new AccueilMembre();
-					window.frmPageMembre.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the application.
 	 */
@@ -51,10 +43,15 @@ public class AccueilMembre {
 	public AccueilMembre(CPersonneMembre cm) {
 		this.cm = cm;
 		initialize();
+		
+		this.frmPageMembre.setVisible(true);
 	}
-	
+	/**
+	*@wbp.parser.constructor 
+	***/
 	public AccueilMembre() {
 		initialize();
+		this.frmPageMembre.setVisible(true);
 	}
 
 	/**
@@ -69,7 +66,7 @@ public class AccueilMembre {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setBounds(22, 39, 147, 156);
+		panel.setBounds(22, 39, 147, 166);
 		frmPageMembre.getContentPane().add(panel);
 		
 		JLabel lblNom = new JLabel(cm.getNom());
@@ -120,7 +117,17 @@ public class AccueilMembre {
 		panel.setLayout(gl_panel);
 		
 		JButton btnNewButton = new JButton("Modifier mes Infos");
-		btnNewButton.setBounds(22, 206, 147, 23);
+		btnNewButton.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				// fenetre donnéePerso
+			}
+		});
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnNewButton.setBounds(22, 227, 147, 23);
 		frmPageMembre.getContentPane().add(btnNewButton);
 		
 		JPanel panel_1 = new JPanel();
@@ -148,6 +155,11 @@ public class AccueilMembre {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setEditable(true);
 		comboBox.setBounds(226, 46, 147, 34);
+		
+		for(CCategorie C : cm.getListCategorie()) {
+			comboBox.addItem(C);
+		}
+		
 		frmPageMembre.getContentPane().add(comboBox);
 		
 		JPanel panel_2 = new JPanel();
@@ -199,10 +211,31 @@ public class AccueilMembre {
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setEditable(true);
 		comboBox_1.setBounds(226, 150, 147, 34);
+		comboBox_1.addItem(cm);
+		
 		frmPageMembre.getContentPane().add(comboBox_1);
 		
 		JButton btnNewButton_1 = new JButton("D\u00E9connection");
-		btnNewButton_1.setBounds(226, 206, 147, 23);
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Loggin fenetre = new Loggin();
+				frmPageMembre.dispose();
+			}
+		});
+		btnNewButton_1.setBounds(226, 227, 147, 23);
 		frmPageMembre.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("voir");
+		btnNewButton_2.setBounds(226, 82, 89, 23);
+		frmPageMembre.getContentPane().add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("Voir");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnNewButton_3.setBounds(226, 184, 89, 23);
+		frmPageMembre.getContentPane().add(btnNewButton_3);
 	}
 }

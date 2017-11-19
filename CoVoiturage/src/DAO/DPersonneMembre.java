@@ -67,9 +67,9 @@ public class DPersonneMembre extends DAO<CPersonneMembre>{
 				a = new CPersonneMembre(result.getInt("IdPers"),
 						result.getString("nom"),result.getString("prenom"),
 						result.getDate("dateNaissance"),result.getString("sexe"),
-						result.getInt("numero"),result.getString("rue"),
-						result.getInt("numRue"),result.getString("localite"),
-						result.getInt("CodePostal"),result.getString("pseudo"),
+						result.getString("numero"),result.getString("rue"),
+						result.getString("numRue"),result.getString("localite"),
+						result.getString("CodePostal"),result.getString("pseudo"),
 						result.getString("pass"),result.getInt("IdPersMem"),
 						c);
 			}
@@ -92,9 +92,9 @@ public class DPersonneMembre extends DAO<CPersonneMembre>{
 				a = new CPersonneMembre(result.getInt("IdPers"),
 						result.getString("nom"),result.getString("prenom"),
 						result.getDate("dateNaissance"),result.getString("sexe"),
-						result.getInt("numero"),result.getString("rue"),
-						result.getInt("numRue"),result.getString("localite"),
-						result.getInt("CodePostal"),result.getString("pseudo"),
+						result.getString("numero"),result.getString("rue"),
+						result.getString("numRue"),result.getString("localite"),
+						result.getString("CodePostal"),result.getString("pseudo"),
 						result.getString("pass"),result.getInt("IdPersMem"),
 						c);
 			}
