@@ -174,7 +174,7 @@ public class DonneePerso {
 				}
 			}
 		});
-		btnNewButton.setBounds(10, 227, 79, 23);
+		btnNewButton.setBounds(10, 227, 99, 23);
 		frmMesDonnes.getContentPane().add(btnNewButton);
 		
 		JPanel panel_2 = new JPanel();
