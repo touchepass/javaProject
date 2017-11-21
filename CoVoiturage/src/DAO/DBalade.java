@@ -32,7 +32,7 @@ public class DBalade extends DAO<CBalade> {
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			stmt.executeUpdate(
-					"INSERT INTO ListeBaladeVehicule (IdVehicule, IdBalade)" + 
+					"INSERT INTO ListeBaladeVehicule (IdBalade, IdVehicule)" + 
 					" VALUES ("+obj.getIdBalade()+", "+ vehicle.getIdVehicule() +");" 
 					);
 			return true;
