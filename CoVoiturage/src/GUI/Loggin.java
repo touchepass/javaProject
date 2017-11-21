@@ -67,6 +67,12 @@ public class Loggin {
 		frmConnection.getContentPane().add(btnValider);
 		
 		JButton btnQuitter = new JButton("Quitter");
+		btnQuitter.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				frmConnection.dispose();
+			}
+		});
 		btnQuitter.setBounds(260, 198, 89, 23);
 		frmConnection.getContentPane().add(btnQuitter);
 		

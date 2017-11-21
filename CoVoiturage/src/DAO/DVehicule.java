@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import Classe.CPersonneMembre;
 import Classe.CVehicule;
@@ -61,6 +62,28 @@ public class DVehicule extends DAO<CVehicule>{
 			e.printStackTrace();
 		}
 		return a;
+	}
+	
+	public ArrayList<CVehicule> ListeVehiculeBalade(int IdB){
+		ArrayList<CVehicule> lst = new ArrayList<CVehicule>();
+		CVehicule a;
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet result = stmt.executeQuery(
+					 "SELECT * from Vehicule WHERE IdVehicule IN " 
+					+"select IdVehicule from ListeBaladeVehicule where IdBalade = "+IdB+");"
+					);
+			while(result.next()) { 
+				CPersonneMembre pm = new DPersonneMembre().find(result.getInt("IdPersMem"));
+				a = new CVehicule(result.getInt("IdVehicule"),pm,result.getInt("nbrPlaceAssise"),
+						result.getInt("nbrPlaceVelo"),result.getString("imma"));
+				lst.add(a);
+			}
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return lst;
 	}
 	
 }

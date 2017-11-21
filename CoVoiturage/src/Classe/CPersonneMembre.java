@@ -14,7 +14,13 @@ public class CPersonneMembre extends CPersonne{
 		lstCat = new ArrayList<CCategorie>();
 		this.IdPersMem = IdPersMem;
 		payementCotistion = false;
-		lstCat.add(cat);
+	}
+	
+	public CPersonneMembre (int IdPers, String nom, String prenom, Date dateNaissance, String sexe, String numero, String rue, String numRue, String localite, String codePostal, String pseudo, String pass, int IdPersMem, ArrayList<CCategorie> c) {
+		super(IdPers, nom,  prenom,  dateNaissance,  sexe,  numero,  rue,  numRue,  localite,  codePostal, pseudo, pass);
+		lstCat = c;
+		this.IdPersMem = IdPersMem;
+		payementCotistion = false;
 	}
 	
 	public CPersonneMembre() {}

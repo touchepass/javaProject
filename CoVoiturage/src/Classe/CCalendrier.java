@@ -24,4 +24,8 @@ public class CCalendrier {
 	public String getNom() {
 		return this.nom;
 	}
+	
+	public String toString() {
+		return "Calendrier " + this.getNom();
+	}
 }

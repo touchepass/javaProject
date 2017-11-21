@@ -1,6 +1,7 @@
 package DAO;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Date;
 
 import Classe.CBalade;
@@ -17,6 +18,22 @@ public class DBalade extends DAO<CBalade> {
 			stmt.executeUpdate(
 					"INSERT INTO Balade (rue, numRue,localite,codePostal,forfait,dateBalade)" + 
 					" VALUES ("+obj.getRue()+", "+obj.getNumRue()+" , "+obj.getLocalite()+" , "+obj.getCodePostal()+","+obj.getForfait()+" , "+obj.getDate()+");" 
+					);
+			return true;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	public boolean createBaladeVehicule(int IdB, int IdV){		
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate(
+					"INSERT INTO ListeBaladeVehicule (IdVehicule, IdBalade)" + 
+					" VALUES ("+IdV+", "+IdB+");" 
 					);
 			return true;
 		}
@@ -66,8 +83,8 @@ public class DBalade extends DAO<CBalade> {
 			ResultSet result = stmt.executeQuery("select * from Balade where IdBalade= "+IdB+";" );
 			if(result.first()) { 
 				a = new CBalade(result.getInt("IdBalade"),
-						result.getString("rue"),result.getInt("numRue"),
-						result.getString("localite"),result.getInt("codePostal"),
+						result.getString("rue"),result.getString("numRue"),
+						result.getString("localite"),result.getString("codePostal"),
 						result.getInt("forfait"),result.getDate("dateBalade"));
 			}
 		}
@@ -75,6 +92,28 @@ public class DBalade extends DAO<CBalade> {
 			e.printStackTrace();
 		}
 		return a;
+	}
+	
+	public ArrayList<CBalade> ListBalade(int idCal){
+		
+		ArrayList<CBalade> lst = new ArrayList<CBalade>();
+		CBalade a = new CBalade();
+		
+		try{
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet result = stmt.executeQuery("select * from Balade where IdCalendrier = "+idCal+" ORDER BY dateBalade ASC;" );
+			while(result.next()) { 
+				a = new CBalade(result.getInt("IdBalade"),
+						result.getString("rue"),result.getString("numRue"),
+						result.getString("localite"),result.getString("codePostal"),
+						result.getInt("forfait"),result.getDate("dateBalade"));
+				lst.add(a);
+			}
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return lst;
 	}
 
 }

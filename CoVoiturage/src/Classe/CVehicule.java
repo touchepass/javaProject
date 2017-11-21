@@ -48,7 +48,13 @@ public class CVehicule {
 	// Méthodes
 	///////////////////////
 	
+	public int placeRestante() {
+		return nbrPlaceAssise - lstPassager.size();
+	}
 	
+	public String toString() {
+		return this.getImma() + " place : " + this.placeRestante();
+	}
 
 	
 }
