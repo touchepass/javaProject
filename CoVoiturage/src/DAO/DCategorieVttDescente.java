@@ -61,7 +61,7 @@ public class DCategorieVttDescente extends DAO<CCategorieVttDescente>{
 	
 	@Override
 	public CCategorieVttDescente find(Object obj){
-		CCategorieVttDescente a = new CCategorieVttDescente();
+		CCategorieVttDescente a = null;
 		try{
 			ResultSet result = this.connect.createStatement(
 			ResultSet.TYPE_SCROLL_INSENSITIVE,

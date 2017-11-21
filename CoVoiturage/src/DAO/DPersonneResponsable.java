@@ -48,7 +48,7 @@ public class DPersonneResponsable extends DAO<CPersonneResponsable> {
 	
 	@Override
 	public CPersonneResponsable find(Object obj){
-		CPersonneResponsable a = new CPersonneResponsable();
+		CPersonneResponsable a = null;
 		CCategorie  c = new CCategorie();
 		try{
 			String pseudo = (String)obj;
@@ -74,7 +74,7 @@ public class DPersonneResponsable extends DAO<CPersonneResponsable> {
 	}
 	
 	public CPersonneResponsable find(int obj){
-		CPersonneResponsable a = new CPersonneResponsable();
+		CPersonneResponsable a = null;
 		CCategorie  c = new CCategorie();
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);

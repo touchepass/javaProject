@@ -60,7 +60,7 @@ public class DCategorieCyclo extends DAO<CCategorieCyclo>{
 	
 	@Override
 	public CCategorieCyclo find(Object obj){
-		CCategorieCyclo a = new CCategorieCyclo();
+		CCategorieCyclo a = null;
 		try{
 			ResultSet result = this.connect.createStatement(
 			ResultSet.TYPE_SCROLL_INSENSITIVE,

@@ -77,7 +77,7 @@ public class DCategorie extends DAO<CCategorie>{
 	}
 	@Override
 	public CCategorie find(Object obj){
-		CCategorie a = new CCategorie();
+		CCategorie a = null;
 		try{
 			ResultSet result = this.connect.createStatement(
 			ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -94,7 +94,7 @@ public class DCategorie extends DAO<CCategorie>{
 	}
 	
 	public List<CCategorie> ListeCategorie(){
-		CCategorie a = new CCategorie();
+		CCategorie a = null;
 		List<CCategorie> lst = new ArrayList<CCategorie>();
 		try{
 			ResultSet result = this.connect.createStatement(
@@ -115,7 +115,7 @@ public class DCategorie extends DAO<CCategorie>{
 	public ArrayList<CCategorie> find(CPersonne mbr, boolean inscrit) {
 		int id = mbr.getIdPers();
 		
-		CCategorie a = new CCategorie();
+		CCategorie a = null;
 		ArrayList<CCategorie> lst = new ArrayList<CCategorie>();
 		try {
 			ResultSet result = this.connect.createStatement(

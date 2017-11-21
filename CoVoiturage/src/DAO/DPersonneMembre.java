@@ -72,8 +72,7 @@ public class DPersonneMembre extends DAO<CPersonneMembre>{
 	
 	@Override
 	public CPersonneMembre find(Object obj){
-		CPersonneMembre a = new CPersonneMembre();
-		ArrayList<CCategorie>  c = new ArrayList<CCategorie>();
+		CPersonneMembre a = null;
 		
 		try{
 			String pseudo = (String)obj;
@@ -101,8 +100,8 @@ public class DPersonneMembre extends DAO<CPersonneMembre>{
 	}
 	
 	public CPersonneMembre find(int obj){
-		CPersonneMembre a = new CPersonneMembre();
-		ArrayList<CCategorie>  c = new ArrayList<CCategorie>();
+		CPersonneMembre a = null;
+		
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet result = stmt.executeQuery("select * from Personne p  inner join PersonneMembre pm " + " on pm.IdPers = p.IdPers where IdPersMem='"+obj+"'" );
@@ -123,6 +122,7 @@ public class DPersonneMembre extends DAO<CPersonneMembre>{
 		catch(SQLException e){
 			e.printStackTrace();
 		}
+		
 		return a;
 	}
 }
