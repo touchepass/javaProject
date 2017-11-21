@@ -60,8 +60,8 @@ public class DPersonneTresorier extends DAO<CPersonneTresorier> {
 	
 	@Override
 	public CPersonneTresorier find(Object obj/* ce qui permet de retrouver la balade */){
-		CPersonneTresorier a = new CPersonneTresorier();
-		CCategorie  c = new CCategorie();
+		CPersonneTresorier a = null;
+		CCategorie  c = null;
 		try{
 			String pseudo = (String)obj;
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -86,8 +86,8 @@ public class DPersonneTresorier extends DAO<CPersonneTresorier> {
 	}
 	
 	public CPersonneTresorier find(int obj){
-		CPersonneTresorier a = new CPersonneTresorier();
-		CCategorie  c = new CCategorie();
+		CPersonneTresorier a = null;
+		CCategorie  c = null;
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet result = stmt.executeQuery("select * from Personne p  inner join PersonneTresorier pm " + " on pm.IdPers = p.IdPers where IdPersTres="+obj+";" );

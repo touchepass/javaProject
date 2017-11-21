@@ -66,7 +66,7 @@ public class DVehicule extends DAO<CVehicule>{
 	
 	@Override
 	public CVehicule find(Object obj){
-		CVehicule a = new CVehicule();
+		CVehicule a = null;
 		try{
 			String immaT = (String)obj;
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -85,7 +85,7 @@ public class DVehicule extends DAO<CVehicule>{
 	
 	public ArrayList<CVehicule> find(CBalade bal){
 		ArrayList<CVehicule> lst = new ArrayList<CVehicule>();
-		CVehicule a;
+		CVehicule a = null;
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet result = stmt.executeQuery(

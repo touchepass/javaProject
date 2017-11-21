@@ -78,7 +78,7 @@ public class DBalade extends DAO<CBalade> {
 	
 	@Override
 	public CBalade find(Object obj) {
-		CBalade a = new CBalade();
+		CBalade a = null;
 		
 		try{
 			int IdB = (Integer)obj;
@@ -102,7 +102,7 @@ public class DBalade extends DAO<CBalade> {
 	public ArrayList<CBalade> find(CCalendrier cal) {
 		
 		ArrayList<CBalade> lst = new ArrayList<CBalade>();
-		CBalade a = new CBalade();
+		CBalade a = null;
 		
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);

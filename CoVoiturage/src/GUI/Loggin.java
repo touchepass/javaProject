@@ -7,6 +7,7 @@ import DAO.*;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -56,11 +57,27 @@ public class Loggin {
 		btnValider.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				DPersonneMembre pm = new DPersonneMembre();
-				CPersonneMembre cm = pm.find(txtPseudo.getText().toLowerCase());
 				
-				AccueilMembre fenetre = new AccueilMembre(cm);
-				frmConnection.dispose();
+				String pseudo = txtPseudo.getText().toLowerCase();
+				
+				DPersonneMembre pm = new DPersonneMembre();
+				DPersonneResponsable pr = new DPersonneResponsable();
+				
+				CPersonneMembre cm = pm.find(pseudo);				
+				CPersonneResponsable cr = pr.find(pseudo);
+				
+				
+				if( cm != null ) {
+					AccueilMembre fenetre = new AccueilMembre(cm);
+					frmConnection.dispose();
+				}
+				else if( cr != null ) {
+					AccueilResponsable fenetre = new AccueilResponsable(cr);
+					frmConnection.dispose();
+				}
+				else {
+					JOptionPane.showMessageDialog(frmConnection, "Utilisateur introuvable");
+				}
 				
 			}
 		});
