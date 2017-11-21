@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import Classe.CCategorie;
 import Classe.CPersonneMembre;
 import DAO.DCalendrier;
+import DAO.DCategorie;
 import DAO.DPersonneMembre;
 
 import javax.swing.JPanel;
@@ -22,6 +23,7 @@ import java.awt.FlowLayout;
 import javax.swing.JComboBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class DonneePerso {
 
@@ -222,5 +224,49 @@ public class DonneePerso {
 		});
 		btnNewButton_1.setBounds(306, 227, 89, 23);
 		frmMesDonnes.getContentPane().add(btnNewButton_1);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_3.setBounds(226, 110, 169, 24);
+		frmMesDonnes.getContentPane().add(panel_3);
+		
+		JLabel lblNewLabel_2 = new JLabel("Ajouter une Cat\u00E9gorie");
+		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
+		gl_panel_3.setHorizontalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
+		gl_panel_3.setVerticalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addGap(5)
+					.addComponent(lblNewLabel_2)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		panel_3.setLayout(gl_panel_3);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setEditable(true);
+		comboBox_1.setBounds(226, 155, 169, 31);
+		DCategorie dc = new DCategorie();
+		ArrayList<CCategorie> lstC =  dc.ListeCategorieNonInscrit(cm.getIdPersMem());
+		for(CCategorie C : lstC) {
+			comboBox_1.addItem(C);
+		}
+		frmMesDonnes.getContentPane().add(comboBox_1);
+		
+		JButton btnNewButton_2 = new JButton("Ajouter");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				int idcat = ((CCategorie)comboBox_1.getSelectedItem()).getIdCat();
+				dc.createCategoriePersonne(idcat,cm.getIdPersMem());
+			}
+		});
+		btnNewButton_2.setBounds(306, 197, 89, 23);
+		frmMesDonnes.getContentPane().add(btnNewButton_2);
 	}
 }
