@@ -51,7 +51,7 @@ public class DVehicule extends DAO<CVehicule>{
 		try{
 			String immaT = (String)obj;
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			ResultSet result = stmt.executeQuery("select * from vehicule where imma= "+immaT+";" );
+			ResultSet result = stmt.executeQuery("select * from vehicule where imma= \""+immaT+"\";" );
 			if(result.first()) { 
 				CPersonneMembre pm = new DPersonneMembre().find(result.getInt("IdPersMem"));
 				a = new CVehicule(result.getInt("IdVehicule"),pm,result.getInt("nbrPlaceAssise"),
@@ -71,7 +71,7 @@ public class DVehicule extends DAO<CVehicule>{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet result = stmt.executeQuery(
 					 "SELECT * from Vehicule WHERE IdVehicule IN " 
-					+"select IdVehicule from ListeBaladeVehicule where IdBalade = "+IdB+");"
+					+"(select IdVehicule from ListeBaladeVehicule where IdBalade = "+IdB+");"
 					);
 			while(result.next()) { 
 				CPersonneMembre pm = new DPersonneMembre().find(result.getInt("IdPersMem"));

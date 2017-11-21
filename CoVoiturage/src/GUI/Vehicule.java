@@ -25,27 +25,37 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class Vehicule {
 
 	private JFrame frame;
 	private CPersonneMembre cm;
 	private CBalade ca;
+	private DBalade db;
+	private DVehicule dv;
+	private ArrayList<CVehicule> lstV;
 	private JTextField txtImma;
 	private JTextField txtPV;
 	private JTextField txtPA;
 	
 	public Vehicule(CPersonneMembre cm,CBalade ca) {
-		this.frame.setVisible(true);
+		this.cm  =cm;
+		this.ca = ca;
+		db = new DBalade();
+		dv = new DVehicule();
+		lstV = dv.ListeVehiculeBalade(ca.getIdBalade());
 		initialize();
+		this.frame.setVisible(true);
 	}
 	
 	/**
 	*@wbp.parser.constructor 
 	***/
 	public Vehicule() {
-		this.frame.setVisible(true);
+		
 		initialize();
+		this.frame.setVisible(true);
 	}
 
 	/**
@@ -139,6 +149,11 @@ public class Vehicule {
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(234, 57, 190, 30);
+		
+		for(CVehicule V : lstV) {
+			if(V.placeRestante()> 0)
+				comboBox.addItem(V);
+		}
 		frame.getContentPane().add(comboBox);
 		
 		JButton btnNewButton_1 = new JButton("Inscription");
