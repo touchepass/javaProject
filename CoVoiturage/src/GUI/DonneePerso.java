@@ -203,7 +203,6 @@ public class DonneePerso {
 		panel_2.setLayout(gl_panel_2);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setEditable(true);
 		for(CCategorie C : cm.getListCategorie()) {
 		
 			comboBox.addItem(C);
@@ -249,7 +248,6 @@ public class DonneePerso {
 		panel_3.setLayout(gl_panel_3);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setEditable(true);
 		comboBox_1.setBounds(226, 155, 169, 31);
 		DCategorie dc = new DCategorie();
 		ArrayList<CCategorie> lstC =  dc.ListeCategorieNonInscrit(cm.getIdPersMem());
