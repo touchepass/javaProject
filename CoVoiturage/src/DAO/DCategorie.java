@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Classe.CCategorie;
+import Classe.CPersonne;
 import Classe.CPersonneMembre;
 
 
@@ -32,12 +33,12 @@ public class DCategorie extends DAO<CCategorie>{
 		return false;
 	}
 	
-	public boolean createCategoriePersonne(int IdCat, int IdPersMem){		
+	public boolean create(CCategorie cat, CPersonne mbr){		
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			stmt.executeUpdate(
 					"INSERT INTO ListeCategoriePersonne (IdCat,IdPersMem) "+
-							" VALUES ("+IdCat+","+IdPersMem+");" 
+							" VALUES ("+cat.getIdCat()+","+mbr.getIdPers()+");" 
 					);
 			return true;
 		}
@@ -109,39 +110,18 @@ public class DCategorie extends DAO<CCategorie>{
 		return lst;
 	}
 	
-	public ArrayList<CCategorie> ListeCategorieNonInscrit(int obj){
+	public ArrayList<CCategorie> find(CPersonne mbr, boolean inscrit) {
+		int id = mbr.getIdPers();
+		
 		CCategorie a = new CCategorie();
 		ArrayList<CCategorie> lst = new ArrayList<CCategorie>();
-		try{
+		try {
 			ResultSet result = this.connect.createStatement(
 			ResultSet.TYPE_SCROLL_INSENSITIVE,
 			ResultSet.CONCUR_READ_ONLY).executeQuery(""
-					+ "select  * FROM Categorie WHERE IdCat NOT IN("
+					+ "select * from Categorie WHERE IdCat "+ (inscrit ? "" : "NOT") +" IN ("
 						+ "SELECT IdCat FROM  ListeCategoriePersonne "
-						+ "WHERE IdPersMem = "+obj+")"
-					+ ";");
-			while(result.next()) {
-				a = new CCategorie(result.getInt("IdCat"),result.getString("nom"));
-				lst.add(a);
-			}
-					
-		}
-		catch(SQLException e){
-			e.printStackTrace();
-		}
-		return lst;
-	}
-	
-	public ArrayList<CCategorie> findListeCategorieParMembre(int obj){
-		CCategorie a = new CCategorie();
-		ArrayList<CCategorie> lst = new ArrayList<CCategorie>();
-		try{
-			ResultSet result = this.connect.createStatement(
-			ResultSet.TYPE_SCROLL_INSENSITIVE,
-			ResultSet.CONCUR_READ_ONLY).executeQuery(""
-					+ "select * from Categorie WHERE IdCat IN("
-						+ "SELECT IdCat FROM  ListeCategoriePersonne "
-						+ "WHERE IdPersMem = "+obj+")"
+						+ "WHERE IdPersMem = "+id+")"
 					+ ";");
 			while(result.next()) {
 				a = new CCategorie(result.getInt("IdCat"),result.getString("nom"));

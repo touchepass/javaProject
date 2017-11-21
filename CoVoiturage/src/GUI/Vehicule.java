@@ -127,11 +127,14 @@ public class Vehicule {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+			
+				CVehicule cv = new CVehicule(0, cm, Integer.parseInt(txtPA.getText()), Integer.parseInt(txtPV.getText()), txtImma.getText());
+				
 				DVehicule dv = new DVehicule();
-				CVehicule cv = new CVehicule(0,cm,Integer.parseInt(txtPA.getText()),Integer.parseInt(txtPV.getText()),txtImma.getText());
 				dv.create(cv);
+				
 				DBalade db = new DBalade();
-				db.createBaladeVehicule(ca.getIdBalade(),dv.find(txtImma.getText()).getIdVehicule());
+				db.create(ca, dv.find(txtImma.getText()));
 			}
 		});
 		btnNewButton.setBounds(10, 227, 89, 23);

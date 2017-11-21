@@ -83,7 +83,7 @@ public class Calendrier {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(29, 50, 188, 28);
 		DBalade db = new DBalade(); 
-		ArrayList<CBalade> lstB = db.ListBalade(ca.getIdCalendrier());
+		ArrayList<CBalade> lstB = db.find(ca);
 		
 		for(CBalade b : lstB) {
 			comboBox.addItem(b);

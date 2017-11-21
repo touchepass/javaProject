@@ -72,21 +72,24 @@ public class DPersonneMembre extends DAO<CPersonneMembre>{
 	public CPersonneMembre find(Object obj){
 		CPersonneMembre a = new CPersonneMembre();
 		ArrayList<CCategorie>  c = new ArrayList<CCategorie>();
+		
 		try{
 			String pseudo = (String)obj;
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet result = stmt.executeQuery("select * from Personne p  inner join PersonneMembre pm " + " on pm.IdPers = p.IdPers where pseudo='"+pseudo+"'" );
 			if(result.first()) { 
+				
 				DCategorie dc = new DCategorie();
-				c = dc.findListeCategorieParMembre(result.getInt("IdPersMem"));
+				
 				a = new CPersonneMembre(result.getInt("IdPers"),
 						result.getString("nom"),result.getString("prenom"),
 						result.getDate("dateNaissance"),result.getString("sexe"),
 						result.getString("numero"),result.getString("rue"),
 						result.getString("numRue"),result.getString("localite"),
 						result.getString("CodePostal"),result.getString("pseudo"),
-						result.getString("pass"),result.getInt("IdPersMem"),
-						c);
+						result.getString("pass"),result.getInt("IdPersMem"));
+				
+				a.setCategories(dc.find(a, true));
 			}
 		}
 		catch(SQLException e){
@@ -103,15 +106,16 @@ public class DPersonneMembre extends DAO<CPersonneMembre>{
 			ResultSet result = stmt.executeQuery("select * from Personne p  inner join PersonneMembre pm " + " on pm.IdPers = p.IdPers where IdPersMem='"+obj+"'" );
 			if(result.first()) { 
 				DCategorie dc = new DCategorie();
-				c = dc.findListeCategorieParMembre(result.getInt("IdPersMem"));
+				
 				a = new CPersonneMembre(result.getInt("IdPers"),
 						result.getString("nom"),result.getString("prenom"),
 						result.getDate("dateNaissance"),result.getString("sexe"),
 						result.getString("numero"),result.getString("rue"),
 						result.getString("numRue"),result.getString("localite"),
 						result.getString("CodePostal"),result.getString("pseudo"),
-						result.getString("pass"),result.getInt("IdPersMem"),
-						c);
+						result.getString("pass"),result.getInt("IdPersMem"));
+				
+				a.setCategories(dc.find(a, true));
 			}
 		}
 		catch(SQLException e){

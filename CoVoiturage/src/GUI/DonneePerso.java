@@ -250,7 +250,7 @@ public class DonneePerso {
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(226, 155, 169, 31);
 		DCategorie dc = new DCategorie();
-		ArrayList<CCategorie> lstC =  dc.ListeCategorieNonInscrit(cm.getIdPersMem());
+		ArrayList<CCategorie> lstC =  dc.find(cm, false);
 		for(CCategorie C : lstC) {
 			comboBox_1.addItem(C);
 		}
@@ -260,8 +260,7 @@ public class DonneePerso {
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				int idcat = ((CCategorie)comboBox_1.getSelectedItem()).getIdCat();
-				dc.createCategoriePersonne(idcat,cm.getIdPersMem());
+				dc.create((CCategorie)comboBox_1.getSelectedItem(), cm);
 			}
 		});
 		btnNewButton_2.setBounds(306, 197, 89, 23);

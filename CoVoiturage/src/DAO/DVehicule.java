@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import Classe.CBalade;
 import Classe.CPersonneMembre;
 import Classe.CVehicule;
 
@@ -64,14 +65,14 @@ public class DVehicule extends DAO<CVehicule>{
 		return a;
 	}
 	
-	public ArrayList<CVehicule> ListeVehiculeBalade(int IdB){
+	public ArrayList<CVehicule> find(CBalade bal){
 		ArrayList<CVehicule> lst = new ArrayList<CVehicule>();
 		CVehicule a;
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet result = stmt.executeQuery(
 					 "SELECT * from Vehicule WHERE IdVehicule IN " 
-					+"select IdVehicule from ListeBaladeVehicule where IdBalade = "+IdB+");"
+					+"select IdVehicule from ListeBaladeVehicule where IdBalade = "+ bal.getIdBalade() +");"
 					);
 			while(result.next()) { 
 				CPersonneMembre pm = new DPersonneMembre().find(result.getInt("IdPersMem"));

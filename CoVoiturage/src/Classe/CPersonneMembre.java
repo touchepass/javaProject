@@ -9,16 +9,9 @@ public class CPersonneMembre extends CPersonne{
 	private ArrayList<CCategorie> lstCat;
 	private boolean payementCotistion;
 	
-	public CPersonneMembre (int IdPers, String nom, String prenom, Date dateNaissance, String sexe, String numero, String rue, String numRue, String localite, String codePostal, String pseudo, String pass, int IdPersMem,CCategorie cat) {
+	public CPersonneMembre (int IdPers, String nom, String prenom, Date dateNaissance, String sexe, String numero, String rue, String numRue, String localite, String codePostal, String pseudo, String pass, int IdPersMem) {
 		super(IdPers, nom,  prenom,  dateNaissance,  sexe,  numero,  rue,  numRue,  localite,  codePostal, pseudo, pass);
 		lstCat = new ArrayList<CCategorie>();
-		this.IdPersMem = IdPersMem;
-		payementCotistion = false;
-	}
-	
-	public CPersonneMembre (int IdPers, String nom, String prenom, Date dateNaissance, String sexe, String numero, String rue, String numRue, String localite, String codePostal, String pseudo, String pass, int IdPersMem, ArrayList<CCategorie> c) {
-		super(IdPers, nom,  prenom,  dateNaissance,  sexe,  numero,  rue,  numRue,  localite,  codePostal, pseudo, pass);
-		lstCat = c;
 		this.IdPersMem = IdPersMem;
 		payementCotistion = false;
 	}
@@ -43,6 +36,15 @@ public class CPersonneMembre extends CPersonne{
 	
 	public CCategorie getListCategoriePositio(int nbr){
 		return this.lstCat.get(nbr);
+	}
+	public ArrayList<CCategorie> getCategories() {
+		return lstCat;
+	}
+	public void setCategories(ArrayList<CCategorie> lstCat) {
+		if( lstCat == null )
+			this.lstCat.clear();
+		else
+			this.lstCat = lstCat;
 	}
 	
 	///////////////////////
