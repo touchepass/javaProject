@@ -1,6 +1,5 @@
 package DAO;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,7 +8,6 @@ import java.util.List;
 
 import Classe.CCategorie;
 import Classe.CPersonne;
-import Classe.CPersonneMembre;
 
 
 public class DCategorie extends DAO<CCategorie>{
@@ -17,6 +15,7 @@ public class DCategorie extends DAO<CCategorie>{
 	
 	public DCategorie() {	}
 	
+	@Override
 	public boolean create(CCategorie obj){		
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -49,6 +48,7 @@ public class DCategorie extends DAO<CCategorie>{
 		return false;
 	}
 	
+	@Override
 	public boolean delete(CCategorie obj){
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -62,6 +62,7 @@ public class DCategorie extends DAO<CCategorie>{
 		return false;
 	}
 	
+	@Override
 	public boolean update(CCategorie obj){
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -74,12 +75,13 @@ public class DCategorie extends DAO<CCategorie>{
 		
 		return false;
 	}
+	@Override
 	public CCategorie find(Object obj){
 		CCategorie a = new CCategorie();
 		try{
 			ResultSet result = this.connect.createStatement(
 			ResultSet.TYPE_SCROLL_INSENSITIVE,
-			ResultSet.CONCUR_READ_ONLY).executeQuery("select * from Categorie where IdCat = " + (Integer)obj );
+			ResultSet.CONCUR_READ_ONLY).executeQuery("select * from Categorie where IdCat = " + obj );
 			if(result.first()) { 
 				a = new CCategorie(result.getInt("IdCat"),result.getString("nom"));
 			}

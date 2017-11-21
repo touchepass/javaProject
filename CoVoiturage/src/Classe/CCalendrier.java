@@ -25,6 +25,7 @@ public class CCalendrier {
 		return this.nom;
 	}
 	
+	@Override
 	public String toString() {
 		return "Calendrier " + this.getNom();
 	}

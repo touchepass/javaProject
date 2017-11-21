@@ -1,12 +1,9 @@
 package GUI;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 
 import Classe.CCategorie;
 import Classe.CPersonneMembre;
-import DAO.DCalendrier;
 import DAO.DCategorie;
 import DAO.DPersonneMembre;
 
@@ -19,7 +16,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import javax.swing.JComboBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

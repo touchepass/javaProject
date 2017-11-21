@@ -28,6 +28,8 @@ public class Calendrier {
 	private JFrame frame;
 	private CPersonneMembre cm;
 	private CCalendrier ca;
+	private DBalade db; 
+	private ArrayList<CBalade> lstB;
 
 	/**
 	 * Launch the application.
@@ -36,6 +38,8 @@ public class Calendrier {
 	public Calendrier(CPersonneMembre cm, CCalendrier ca) {
 		this.cm = cm;
 		this.ca = ca;
+		db = new DBalade();
+		lstB = db.find(ca);
 		initialize();
 		
 		this.frame.setVisible(true);
@@ -94,10 +98,12 @@ public class Calendrier {
 		JButton btnNewButton = new JButton("Liste V\u00E9hicule");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				
+			public void mouseClicked(MouseEvent arg0) {
+				Vehicule fenetre = new Vehicule(cm,(CBalade)comboBox.getSelectedItem());
+				frame.dispose();
 			}
 		});
+		
 		btnNewButton.setBounds(29, 145, 188, 23);
 		frame.getContentPane().add(btnNewButton);
 		

@@ -52,6 +52,7 @@ public class CVehicule {
 		return nbrPlaceAssise - lstPassager.size();
 	}
 	
+	@Override
 	public String toString() {
 		return this.getImma() + " place : " + this.placeRestante();
 	}

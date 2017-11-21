@@ -1,17 +1,16 @@
 package DAO;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import Classe.CCategorie;
-import Classe.CPersonneMembre;
 import Classe.CPersonneResponsable;
 
 public class DPersonneResponsable extends DAO<CPersonneResponsable> {
 	
 	public DPersonneResponsable() {	}
+	@Override
 	public boolean create(CPersonneResponsable obj){		
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -28,6 +27,7 @@ public class DPersonneResponsable extends DAO<CPersonneResponsable> {
 		return false;
 	}
 	
+	@Override
 	public boolean delete(CPersonneResponsable obj){
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -41,10 +41,12 @@ public class DPersonneResponsable extends DAO<CPersonneResponsable> {
 		return false;
 	}
 	
+	@Override
 	public boolean update(CPersonneResponsable obj){
 		return false;
 	}
 	
+	@Override
 	public CPersonneResponsable find(Object obj){
 		CPersonneResponsable a = new CPersonneResponsable();
 		CCategorie  c = new CCategorie();

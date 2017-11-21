@@ -1,6 +1,5 @@
 package DAO;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,6 +11,7 @@ public class DCategorieCyclo extends DAO<CCategorieCyclo>{
 	
 	public DCategorieCyclo() {	}
 	
+	@Override
 	public boolean create(CCategorieCyclo obj){		
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -28,6 +28,7 @@ public class DCategorieCyclo extends DAO<CCategorieCyclo>{
 		return false;
 	}
 	
+	@Override
 	public boolean delete(CCategorieCyclo obj){
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -41,6 +42,7 @@ public class DCategorieCyclo extends DAO<CCategorieCyclo>{
 		return false;
 	}
 	
+	@Override
 	public boolean update(CCategorieCyclo obj){
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -56,12 +58,13 @@ public class DCategorieCyclo extends DAO<CCategorieCyclo>{
 		return false;
 	}
 	
+	@Override
 	public CCategorieCyclo find(Object obj){
 		CCategorieCyclo a = new CCategorieCyclo();
 		try{
 			ResultSet result = this.connect.createStatement(
 			ResultSet.TYPE_SCROLL_INSENSITIVE,
-			ResultSet.CONCUR_READ_ONLY).executeQuery("select * from CategorieCyclo where IdCatCyclo = "+(Integer)obj+";");
+			ResultSet.CONCUR_READ_ONLY).executeQuery("select * from CategorieCyclo where IdCatCyclo = "+obj+";");
 			if(result.first()) { 
 				a = new CCategorieCyclo(result.getInt("IdCat"),result.getInt("IdCatCyclo"),result.getInt("capacitePorteBagage"));
 			}

@@ -1,7 +1,6 @@
 package Classe;
 
-import java.util.*;
-import java.time.LocalDate; 
+import java.util.*; 
 
 public class CBalade {
 	
@@ -64,6 +63,7 @@ public class CBalade {
 		this.date = date;
 	}
 	
+	@Override
 	public String toString() {
 		return this.getDate()+ " forfait : " + this.getForfait();
 	}

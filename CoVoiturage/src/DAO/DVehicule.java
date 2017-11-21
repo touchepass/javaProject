@@ -1,6 +1,5 @@
 package DAO;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,6 +13,7 @@ public class DVehicule extends DAO<CVehicule>{
 	
 	public DVehicule() {	}
 	
+	@Override
 	public boolean create(CVehicule obj){		
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -30,6 +30,7 @@ public class DVehicule extends DAO<CVehicule>{
 		return false;
 	}
 	
+	@Override
 	public boolean delete(CVehicule obj){
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -43,16 +44,18 @@ public class DVehicule extends DAO<CVehicule>{
 		return false;
 	}
 	
+	@Override
 	public boolean update(CVehicule obj){
 		return false;
 	}
 	
+	@Override
 	public CVehicule find(Object obj){
 		CVehicule a = new CVehicule();
 		try{
 			String immaT = (String)obj;
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			ResultSet result = stmt.executeQuery("select * from vehicule where imma= "+immaT+";" );
+			ResultSet result = stmt.executeQuery("select * from vehicule where imma= \""+immaT+"\";" );
 			if(result.first()) { 
 				CPersonneMembre pm = new DPersonneMembre().find(result.getInt("IdPersMem"));
 				a = new CVehicule(result.getInt("IdVehicule"),pm,result.getInt("nbrPlaceAssise"),
@@ -72,7 +75,7 @@ public class DVehicule extends DAO<CVehicule>{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet result = stmt.executeQuery(
 					 "SELECT * from Vehicule WHERE IdVehicule IN " 
-					+"select IdVehicule from ListeBaladeVehicule where IdBalade = "+ bal.getIdBalade() +");"
+					+"(select IdVehicule from ListeBaladeVehicule where IdBalade = "+ bal.getIdBalade() +");"
 					);
 			while(result.next()) { 
 				CPersonneMembre pm = new DPersonneMembre().find(result.getInt("IdPersMem"));

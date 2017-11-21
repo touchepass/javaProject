@@ -11,6 +11,7 @@ public class DBalade extends DAO<CBalade> {
 	
 	public DBalade() {	}
 	
+	@Override
 	public boolean create(CBalade obj){		
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -43,6 +44,7 @@ public class DBalade extends DAO<CBalade> {
 		return false;
 	}
 	
+	@Override
 	public boolean delete(CBalade obj){
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -56,6 +58,7 @@ public class DBalade extends DAO<CBalade> {
 		return false;
 	}
 	
+	@Override
 	public boolean update(CBalade obj){
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -73,6 +76,7 @@ public class DBalade extends DAO<CBalade> {
 		return false;
 	}
 	
+	@Override
 	public CBalade find(Object obj) {
 		CBalade a = new CBalade();
 		

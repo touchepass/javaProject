@@ -1,6 +1,5 @@
 package Classe;
 
-import java.time.LocalDate;
 import java.util.Date; 
 
 public abstract class CPersonne {
@@ -96,6 +95,7 @@ public abstract class CPersonne {
 	// Méthodes
 	///////////////////////
 	
+	@Override
 	public String toString() {
 		return this.nom + " " + this.prenom;
 	}	

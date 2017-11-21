@@ -9,6 +9,7 @@ public class DCategorieVttRandonnee extends DAO<CCategorieVttRandonnee> {
 	
 	public DCategorieVttRandonnee() {	}
 	
+	@Override
 	public boolean create(CCategorieVttRandonnee obj){		
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -25,6 +26,7 @@ public class DCategorieVttRandonnee extends DAO<CCategorieVttRandonnee> {
 		return false;
 	}
 	
+	@Override
 	public boolean delete(CCategorieVttRandonnee obj){
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -38,6 +40,7 @@ public class DCategorieVttRandonnee extends DAO<CCategorieVttRandonnee> {
 		return false;
 	}
 	
+	@Override
 	public boolean update(CCategorieVttRandonnee obj){
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -54,12 +57,13 @@ public class DCategorieVttRandonnee extends DAO<CCategorieVttRandonnee> {
 		return false;
 	}
 	
+	@Override
 	public CCategorieVttRandonnee find(Object obj){
 		CCategorieVttRandonnee a = new CCategorieVttRandonnee();
 		try{
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeQuery(" select * from CategorieVtt where IdCat = 3 and IdCatVtt = "+(Integer)obj+";");
+					ResultSet.CONCUR_READ_ONLY).executeQuery(" select * from CategorieVtt where IdCat = 3 and IdCatVtt = "+obj+";");
 					if(result.first()) { 
 						a = new CCategorieVttRandonnee(result.getInt("IdCat"),result.getInt("IdCatVtt"),result.getInt("diamPneu"),result.getInt("nbrPlateau"),result.getString("caracteristique"));
 					}

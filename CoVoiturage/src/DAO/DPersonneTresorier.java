@@ -1,18 +1,17 @@
 package DAO;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import Classe.CCategorie;
-import Classe.CPersonneResponsable;
 import Classe.CPersonneTresorier;
 
 public class DPersonneTresorier extends DAO<CPersonneTresorier> {
 	
 	public DPersonneTresorier() {	}
 	
+	@Override
 	public boolean create(CPersonneTresorier obj){		
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -29,6 +28,7 @@ public class DPersonneTresorier extends DAO<CPersonneTresorier> {
 		return false;
 	}
 	
+	@Override
 	public boolean delete(CPersonneTresorier obj){
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -42,6 +42,7 @@ public class DPersonneTresorier extends DAO<CPersonneTresorier> {
 		return false;
 	}
 	
+	@Override
 	public boolean update(CPersonneTresorier obj){
 		try{
 			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -57,6 +58,7 @@ public class DPersonneTresorier extends DAO<CPersonneTresorier> {
 		return false;
 	}
 	
+	@Override
 	public CPersonneTresorier find(Object obj/* ce qui permet de retrouver la balade */){
 		CPersonneTresorier a = new CPersonneTresorier();
 		CCategorie  c = new CCategorie();

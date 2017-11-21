@@ -27,6 +27,7 @@ public class CCategorie {
 	// Méthodes
 	///////////////////////
 	
+	@Override
 	public String toString() {
 		return this.getNom();
 	}

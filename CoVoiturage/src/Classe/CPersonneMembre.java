@@ -61,6 +61,7 @@ public class CPersonneMembre extends CPersonne{
 	
 	
 	
+	@Override
 	public String toString() {
 		return super.toString() + "(M)";
 	}
