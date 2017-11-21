@@ -83,6 +83,21 @@ public class DVehicule extends DAO<CVehicule>{
 		return a;
 	}
 	
+	public int find(CVehicule cv) {
+		int cpt = 0;
+		try {
+			Statement stmt = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet result = stmt.executeQuery("select * from ListePassager where IDVehicule = "+cv.getIdVehicule()+";" );
+			while(result.next()) { 
+				cpt++;
+			}
+			return cpt;
+		}
+		catch (SQLException e){
+			return 0;
+		}
+	}
+	
 	public ArrayList<CVehicule> find(CBalade bal){
 		ArrayList<CVehicule> lst = new ArrayList<CVehicule>();
 		CVehicule a = null;

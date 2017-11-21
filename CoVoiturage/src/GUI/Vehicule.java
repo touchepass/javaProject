@@ -139,6 +139,10 @@ public class Vehicule {
 				
 				DBalade db = new DBalade();
 				db.create(ca, dv.find(txtImma.getText()));
+				
+				JLabel lblInfo2 = new JLabel("Véhicule ajouté");
+				lblInfo2.setBounds(234, 173, 190, 14);
+				frame.getContentPane().add(lblInfo2);
 			}
 		});
 		btnNewButton.setBounds(10, 227, 89, 23);
@@ -154,6 +158,15 @@ public class Vehicule {
 		frame.getContentPane().add(comboBox);
 		
 		JButton btnNewButton_1 = new JButton("Inscription");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				dv.create((CVehicule)comboBox.getSelectedItem(), cm);
+				JLabel lblInfo = new JLabel("Vous êtes inscrit");
+				lblInfo.setBounds(234, 113, 190, 30);
+				frame.getContentPane().add(lblInfo);
+			}
+		});
 		btnNewButton_1.setBounds(335, 227, 89, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
@@ -167,5 +180,8 @@ public class Vehicule {
 		});
 		btnNewButton_2.setBounds(161, 227, 112, 23);
 		frame.getContentPane().add(btnNewButton_2);
+		
+		
+		
 	}
 }

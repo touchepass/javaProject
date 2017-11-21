@@ -1,6 +1,8 @@
 package Classe;
 import java.util.* ;
 
+import DAO.DVehicule;
+
 public class CVehicule {
 	
 	private int IdVehicule;
@@ -49,7 +51,8 @@ public class CVehicule {
 	///////////////////////
 	
 	public int placeRestante() {
-		return nbrPlaceAssise - lstPassager.size();
+		DVehicule dv = new DVehicule();
+		return nbrPlaceAssise - dv.find(this);
 	}
 	
 	@Override
